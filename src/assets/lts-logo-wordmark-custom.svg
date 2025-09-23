@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="920" height="240" viewBox="0 0 920 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="LTS Lead Tracking System logo">
+  <defs>
+    
+<linearGradient id="gCustom" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0%" stop-color="#fc9d63"/>
+  <stop offset="100%" stop-color="#639aac"/>
+</linearGradient>
+
+    <filter id="softShadow2" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <g transform="translate(20,20)">
+    <rect x="0" y="0" width="200" height="200" rx="42" fill="url(#gCustom)" filter="url(#softShadow2)"/>
+    <g transform="translate(0,-2)" fill="white">
+      <rect x="40" y="56" width="120" height="16" rx="8" opacity="0.95"/>
+      <rect x="52" y="86" width="96" height="14" rx="7" opacity="0.9"/>
+      <rect x="64" y="112" width="72" height="12" rx="6" opacity="0.85"/>
+    </g>
+    <path d="M76 132 L124 132 L116 156 L84 156 Z" fill="white" opacity="0.95"/>
+    <g transform="translate(0,6)" fill="white">
+      <rect x="96" y="156" width="8" height="36" rx="4"/>
+      <path d="M100 204 L84 188 L116 188 Z" />
+    </g>
+  </g>
+
+  <g transform="translate(260,76)">
+    <g fill="#0F172A">
+      <path d="M0 0 H24 V62 H94 V80 H0 Z"/>
+      <path d="M116 0 H200 V18 H160 V80 H140 V18 H116 Z"/>
+      <path d="M220 18 C220 6 230 0 248 0 H316 C338 0 352 10 352 30 C352 48 340 60 320 60 H256 V80 H236 V30 C236 10 248 0 268 0 H320 C330 0 336 4 336 12 C336 20 330 24 320 24 H248 C230 24 220 18 220 18 Z"/>
+    </g>
+    <text x="0" y="120" font-family="Inter, Poppins, Segoe UI, system-ui, -apple-system, sans-serif" font-size="26" fill="#334155" letter-spacing="1">
+      Lead Tracking System
+    </text>
+  </g>
+</svg>
