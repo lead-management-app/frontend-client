@@ -6,23 +6,29 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import RootLayout from "./layout/RootLayout";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import ResetPassword from "./pages/ResetPassword";
-import SetPassword from "./pages/SetPassword";
-import VerifyEmail from "./pages/VerifyEmail";
-import ForgotPassword from "./pages/ForgotPassword";
+import Login from "./_auth/forms/Login";
+import Register from "./_auth/forms/Register";
+import ResetPassword from "./_auth/forms/ResetPassword";
+import SetPassword from "./_auth/forms/SetPassword";
+import VerifyEmail from "./_auth/VerifyEmail";
+import ForgotPassword from "./_auth/forms/ForgotPassword";
+import AuthLayout from "./_auth/AuthLayout";
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<RootLayout />}>
-        <Route index element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/verifyemail" element={<VerifyEmail />} />
-        <Route path="/forgotpassword" element={<ForgotPassword />} />
-        <Route path="/resetpassword" element={<ResetPassword />} />
-        <Route path="/setpassword" element={<SetPassword />} />
+        <Route element={<AuthLayout />}>
+          <Route index element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/resetpassword" element={<ResetPassword />} />
+          <Route path="/verifyemail" element={<VerifyEmail />} />
+          <Route path="/forgotpassword" element={<ForgotPassword />} />
+          <Route path="/setpassword" element={<SetPassword />} />
+        </Route>
+
+        {/* <Route path="/register" element={<Register />} /> */}
+
         {/* <Route path="*" element={<NotFound />} /> */}
       </Route>
     )

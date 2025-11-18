@@ -3,7 +3,7 @@ import axiosInstance from "../utils/axiosInstance";
 const authApi = {
   // Register new user
   register: async (userData) => {
-    const response = await axiosInstance.post("/auth/register", userData);
+    const response = await axiosInstance.post("/auth/signup", userData);
     return response.data;
   },
 
@@ -15,7 +15,7 @@ const authApi = {
 
   // Verify email token
   verifyEmail: async (token) => {
-    const response = await axiosInstance.post("/auth/verify-email", { token });
+    const response = await axiosInstance.post("/auth/verify/", { token });
     return response.data;
   },
 

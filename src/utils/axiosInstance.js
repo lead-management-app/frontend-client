@@ -1,18 +1,19 @@
-import axios from 'axios';
+import axios from "axios";
 
-const API_BASE_URL = 'YOUR_API_BASE_URL_HERE'; // Replace with your API base URL
+const API_BASE_URL = "http://localhost:9090/lms/api/v1";
 
 const axiosInstance = axios.create({
   baseURL: API_BASE_URL,
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
+  withCredentials: true,
 });
 
 // Request interceptor to add auth token to requests
 axiosInstance.interceptors.request.use(
   (config) => {
-    const token = sessionStorage.getItem('accessToken');
+    const token = sessionStorage.getItem("accessToken");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -35,15 +36,15 @@ axiosInstance.interceptors.response.use(
       originalRequest._retry = true;
 
       try {
-        const refreshToken = sessionStorage.getItem('refreshToken');
+        const refreshToken = sessionStorage.getItem("refreshToken");
         if (refreshToken) {
           const response = await axios.post(`${API_BASE_URL}/auth/refresh`, {
             refreshToken: refreshToken,
           });
 
           const { accessToken, refreshToken: newRefreshToken } = response.data;
-          sessionStorage.setItem('accessToken', accessToken);
-          sessionStorage.setItem('refreshToken', newRefreshToken);
+          sessionStorage.setItem("accessToken", accessToken);
+          sessionStorage.setItem("refreshToken", newRefreshToken);
 
           // Retry the original request with new token
           originalRequest.headers.Authorization = `Bearer ${accessToken}`;
@@ -51,10 +52,10 @@ axiosInstance.interceptors.response.use(
         }
       } catch (refreshError) {
         // Refresh token is invalid, redirect to login
-        sessionStorage.removeItem('accessToken');
-        sessionStorage.removeItem('refreshToken');
-        sessionStorage.removeItem('user');
-        window.location.href = '/login';
+        sessionStorage.removeItem("accessToken");
+        sessionStorage.removeItem("refreshToken");
+        sessionStorage.removeItem("user");
+        window.location.href = "/login";
         return Promise.reject(refreshError);
       }
     }
