@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAuth from "../../hooks/useAuth";
-import * as yup from "yup";
+import { forgotpasswordScheme } from "../../validation/index";
 import ErrorMessage from "../../components/ErrorMessage";
 
 function ForgotPassword() {
@@ -13,19 +13,12 @@ function ForgotPassword() {
   const navigate = useNavigate();
   const { forgotPassword } = useAuth();
 
-  const schema = yup.object().shape({
-    email: yup
-      .string()
-      .required("Email is required")
-      .email("Please enter a valid email"),
-  });
-
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm({ resolver: yupResolver(schema) });
+  } = useForm({ resolver: yupResolver(forgotpasswordScheme) });
 
   const onSubmit = async (data) => {
     setLoading(true);

@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { setpasswordScheme } from "../../validation/index";
 import useAuth from "../../hooks/useAuth";
 import ErrorMessage from "../../components/ErrorMessage";
-import * as yup from "yup";
+
 
 function SetPassword() {
   const [searchParams] = useSearchParams();
@@ -14,31 +15,12 @@ function SetPassword() {
 
   const { setPassword: setUserPassword } = useAuth();
 
-  const schema = yup.object().shape({
-    password: yup
-      .string()
-      .required("Password is required")
-      .min(6, "Password must be at least 6 characters")
-      .matches(
-        /^[a-zA-Z0-9]+$/,
-        "Password must be alphanumeric (letters & numbers only)"
-      ),
-
-    confirmPassword: yup
-      .string()
-      .oneOf([yup.ref("password"), null], "Passwords must match")
-      .required("Confirm password is required")
-      .matches(
-        /^[a-zA-Z0-9]+$/,
-        "Password must be alphanumeric (letters & numbers only)"
-      ),
-  });
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(schema) });
+  } = useForm({ resolver: yupResolver(setpasswordScheme) });
 
   const onSubmit = async (data) => {
     setLoading(true);

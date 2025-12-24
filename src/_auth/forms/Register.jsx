@@ -2,8 +2,8 @@ import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { registerSchema } from "../../validation/index";
 import useAuth from "../../hooks/useAuth";
-import * as yup from "yup";
 import ErrorMessage from "../../components/ErrorMessage";
 
 function Register() {
@@ -12,28 +12,11 @@ function Register() {
   const navigate = useNavigate();
   const { register: authRegister } = useAuth();
 
-  const schema = yup.object().shape({
-    name: yup
-      .string()
-      .required("Name is required")
-      .min(2, "Name must be at least 2 characters"),
-
-    email: yup
-      .string()
-      .required("Email is required")
-      .email("Please enter a valid email"),
-
-    password: yup
-      .string()
-      .required("Password is required")
-      .min(6, "Password must be at least 6 characters"),
-  });
-
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(schema) });
+  } = useForm({ resolver: yupResolver(registerSchema) });
 
   const onSubmit = async (data) => {
     setLoading(true);
