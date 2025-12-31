@@ -14,6 +14,7 @@ import VerifyEmail from "./_auth/VerifyEmail";
 import ForgotPassword from "./_auth/forms/ForgotPassword";
 import AuthLayout from "./_auth/AuthLayout";
 
+
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(

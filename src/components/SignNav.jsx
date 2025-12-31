@@ -1,6 +1,9 @@
 import React from "react";
 import Logo from "../assets/lts-logo-icon-custom.svg";
 import { useNavigate, useLocation } from "react-router-dom";
+// eslint-disable-next-line no-unused-vars
+import { motion } from "framer-motion";
+import { navContainer, navItem } from "../animation";
 
 const SignNav = () => {
   const navigate = useNavigate();
@@ -8,12 +11,17 @@ const SignNav = () => {
 
   return (
     <>
-      <div className="flex justify-between items-center h-[72px] px-4 border-b-[1px] border-[#666666]">
-        <div>
+      <motion.div
+        variants={navContainer}
+        initial="hidden"
+        animate="visible"
+        className="flex justify-between items-center h-[72px] px-4 border-b-[1px] border-[#666666]"
+      >
+        <motion.div variants={navItem}>
           <img src={Logo} alt="logo" className="h-12 w-auto " />
-        </div>
+        </motion.div>
 
-        <div className="flex gap-2">
+        <motion.div variants={navItem} className="flex gap-2">
           <button
             onClick={() => navigate("/")}
             className={`btn-active ${
@@ -34,8 +42,8 @@ const SignNav = () => {
           >
             Sign up
           </button>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </>
   );
 };
