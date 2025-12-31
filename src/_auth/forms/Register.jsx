@@ -5,6 +5,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { registerSchema } from "../../validation/index";
 import useAuth from "../../hooks/useAuth";
 import ErrorMessage from "../../components/ErrorMessage";
+// eslint-disable-next-line no-unused-vars
+import { AnimatePresence, motion } from "framer-motion";
+import { container, formVariant, item } from "../../animation";
 
 function Register() {
   const [loading, setLoading] = useState(false);
@@ -38,18 +41,27 @@ function Register() {
   return (
     <>
       {/* SIGN UP PAGE */}
-      <div className="flex-1 flex  justify-center items-center p-8 max-w-[659px]">
-        <div className="w-full max-w-[473px] flex flex-col gap-[40px]">
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate="visible"
+        className="flex-1 flex  justify-center items-center p-8 max-w-[659px]"
+      >
+        <motion.div
+          variants={formVariant}
+          className="w-full max-w-[473px] flex flex-col gap-[40px]"
+        >
           {/* Error message */}
           <ErrorMessage message={error} />
-          <div>
+          <motion.div variants={item}>
             <h1 className="text-[32px] text-[#333333] font-medium">Sign up</h1>
             <p className="text-[16px] text-[#666666] ">
-              Sign up for Lead Management Syatem
+              Sign up for Verata Management Syatem
             </p>
-          </div>
+          </motion.div>
 
-          <form
+          <motion.form
+            variants={item}
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col gap-4"
           >
@@ -99,9 +111,9 @@ function Register() {
                 Log In
               </span>
             </p>
-          </form>
-        </div>
-      </div>
+          </motion.form>
+        </motion.div>
+      </motion.div>
     </>
   );
 }

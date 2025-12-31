@@ -5,6 +5,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import useAuth from "../../hooks/useAuth";
 import { forgotpasswordScheme } from "../../validation/index";
 import ErrorMessage from "../../components/ErrorMessage";
+// // eslint-disable-next-line no-unused-vars
+// import { AnimatePresence, motion } from "framer-motion";
+// import { container, formVariant, item } from "../../animation";
 
 function ForgotPassword() {
   const [loading, setLoading] = useState(false);
@@ -101,7 +104,7 @@ function ForgotPassword() {
             <h1 className="text-[32px] text-[#333333] font-medium">
               Forgot Password
             </h1>
-            <p className="text-[16px] text-[#666666]">Lead Management System</p>
+            <p className="text-[16px] text-[#666666]">Verata Management System</p>
           </div>
 
           <form

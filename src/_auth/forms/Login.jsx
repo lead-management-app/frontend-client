@@ -58,7 +58,7 @@ function Login() {
           <motion.div variants={item}>
             <h1 className="text-[32px] text-[#333333] font-medium">Log In</h1>
             <p className="text-[16px] text-[#666666] ">
-              Log Into Lead Management System
+              Log Into Verata Management System
             </p>
           </motion.div>
 

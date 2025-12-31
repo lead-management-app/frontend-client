@@ -3,7 +3,7 @@ import Logo from "../assets/lts-logo-icon-custom.svg";
 import { useNavigate, useLocation } from "react-router-dom";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
-import { navContainer, navItem } from "../animation";
+import { button, navContainer, navItem } from "../animation";
 
 const SignNav = () => {
   const navigate = useNavigate();
@@ -22,7 +22,8 @@ const SignNav = () => {
         </motion.div>
 
         <motion.div variants={navItem} className="flex gap-2">
-          <button
+          <motion.button
+            {...button}
             onClick={() => navigate("/")}
             className={`btn-active ${
               location.pathname === "/"
@@ -31,8 +32,9 @@ const SignNav = () => {
             }`}
           >
             Log in
-          </button>
-          <button
+          </motion.button>
+          <motion.button
+            {...button}
             onClick={() => navigate("/register")}
             className={`btn-active ${
               location.pathname === "/register"
@@ -41,7 +43,7 @@ const SignNav = () => {
             }`}
           >
             Sign up
-          </button>
+          </motion.button>
         </motion.div>
       </motion.div>
     </>

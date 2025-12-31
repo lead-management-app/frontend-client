@@ -5,6 +5,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { resetScheme } from "../../validation/index";
 import useAuth from "../../hooks/useAuth";
 import ErrorMessage from "../../components/ErrorMessage";
+// eslint-disable-next-line no-unused-vars
+import { AnimatePresence, motion } from "framer-motion";
+import { container, formVariant, item } from "../../animation";
 
 function ResetPassword() {
   const [searchParams] = useSearchParams();
@@ -49,19 +52,28 @@ function ResetPassword() {
   return (
     <>
       {/* Right Content Section */}
-      <div className="flex-1 flex  justify-center items-center p-8 max-w-[659px]">
-        <div className="w-full max-w-[473px] flex flex-col gap-[40px]">
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate="visible"
+        className="flex-1 flex  justify-center items-center p-8 max-w-[659px]"
+      >
+        <motion.div
+          variants={formVariant}
+          className="w-full max-w-[473px] flex flex-col gap-[40px]"
+        >
           <ErrorMessage message={error} />
-          <div>
+          <motion.div variants={item}>
             <h1 className="text-[32px] text-[#333333] font-medium">
               Reset Your Password
             </h1>
             <p className="text-[16px] text-[#666666] ">
               Enter your new password below
             </p>
-          </div>
+          </motion.div>
 
-          <form
+          <motion.form
+            variants={item}
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col gap-4"
           >
@@ -92,9 +104,9 @@ function ResetPassword() {
               className="bg-[#D9D9D9] text-[22px] text-white py-2 rounded-[32px] mt-[40px] w-[250px] h-[64px] 
                hover:bg-[#af9b87] hover:text-white active:bg-[#af9b87] active:text-white transition-colors duration-300"
             />
-          </form>
-        </div>
-      </div>
+          </motion.form>
+        </motion.div>
+      </motion.div>
     </>
   );
 }
